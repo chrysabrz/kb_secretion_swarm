@@ -1,0 +1,13 @@
+# kb_secretion_swarm - DASHBOARD (Streamlit app) dependencies.
+#
+# This is the file Streamlit Community Cloud installs by default. It is kept
+# deliberately SLIM so the deploy builds fast and reliably - the dashboard does
+# NOT need the agent pipeline (LangGraph / LangChain / Biopython).
+# To run the pipeline and regenerate the KB, use requirements-pipeline.txt.
+
+streamlit>=1.33
+pandas>=2.0
+plotly>=5.18
+numpy>=1.24
+openai>=1.30          # embeddings + answerer for the QA page (set OPENAI_API_KEY in Secrets)
+python-dotenv>=1.0

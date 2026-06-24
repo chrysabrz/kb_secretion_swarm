@@ -1,0 +1,20 @@
+# kb_secretion_swarm - PIPELINE dependencies (to RUN the swarm / regenerate the KB).
+#
+# Use this for local development / data generation:
+#     py -3.12 -m pip install -r requirements-pipeline.txt
+#
+# It pulls in the dashboard deps too (via the line below), so this single file is
+# everything you need locally. mcp_server.py / mcp_client.py are stdlib-only.
+
+-r requirements.txt          # the dashboard deps (streamlit, pandas, plotly, numpy, openai, dotenv)
+
+# Agent framework (the per-paper pipeline)
+langgraph>=0.2.40            # StateGraph orchestration
+langchain>=0.3.0             # init_chat_model, prompts, structured output
+langchain-core>=0.3.0
+langchain-openai>=0.2.0      # OpenAI provider (gpt-4o-mini default)
+langchain-anthropic>=0.2.0   # Anthropic provider (claude-* for the strongest runs)
+pydantic>=2.6                # validated structured agent outputs
+
+# PubMed ingest
+biopython>=1.83             # Bio.Entrez - PubMed search/fetch

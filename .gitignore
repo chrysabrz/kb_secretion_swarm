@@ -1,0 +1,39 @@
+# secrets (NEVER commit)
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# local-only notes / scaffolds (NEVER push)
+count_results.py
+*.local.*
+
+# data files ARE committed (the deployed Streamlit app serves them)
+# secretion_systems*.json, proteins.json, synonyms.json, and
+# q3_antimalarial_2026*.json are intentionally tracked.
+
+# rebuildable caches & transient artifacts (NOT needed by the app)
+_structures_cache.json
+_embeddings.npy
+_embeddings_keys.json
+_chroma/
+_swarm_checkpoints.sqlite
+_stage*.log
+_*.log
+
+# editor / OS
+.vscode/
+.idea/
+*.code-workspace
+.DS_Store
+Thumbs.db
+
+# leftover from the pre-rename project
+backup_pre_rename/
