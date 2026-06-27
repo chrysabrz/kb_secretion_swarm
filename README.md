@@ -23,7 +23,7 @@ multi-page **Streamlit dashboard** with a cited **Q&A** page.
 >
 > So this KB holds the two as **functional analogues only: no orthology, no shared
 > machinery**, and every agent's prompt carries this rule. (Ordinary orthology *within* a
-> lineage ,e.g. *Plasmodium* ↔ *Toxoplasma*  ->is real biology and is kept.)
+> lineage ,e.g. *Plasmodium* ↔ *Toxoplasma*  ->is real biology is kept.)
 
 
 ## How it works
