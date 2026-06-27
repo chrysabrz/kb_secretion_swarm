@@ -13,7 +13,7 @@ multi-page **Streamlit dashboard** with a cited **Q&A** page.
 >  The **Files** table below explains every file in one line; each file's
 > own docstring has the detail.
 
-> ### Scope note: ESX is *not* a malaria system
+> ## Scope note: malaria / ESX system
 > Two functionally analogous but biologically distinct themes: Plasmodium protein export (PTEX translocon, PEXEL motif, Maurer's clefts) and the bacterial ESX / Type-VII secretion system.
 
 > The parallel is **functional analogy, not homology**: ESX (a *Mycobacterium* prokaryote)
