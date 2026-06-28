@@ -75,8 +75,18 @@ def canon_species(v: str) -> str:
     return " ".join(parts[:2])                    # drop strain: keep genus + species
 
 
-def key_generic(v: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", v.lower())
+# For the genes field, a trailing "gene"/"genes" is a category qualifier, not part
+# of the name ("var genes" == "var"). Stripping it before keying so those group together.
+# Scoped to genes ONLY: in protein fields, "...protein" is usually part of the real
+# name (e.g. "histidine-rich protein"), so we must NOT strip there.
+_GENE_QUALIFIER = re.compile(r"\s+genes?$", re.IGNORECASE)
+
+
+def key_generic(v: str, field: str | None = None) -> str:
+    s = v.strip()
+    if field == "genes":
+        s = _GENE_QUALIFIER.sub("", s).strip() or s
+    return re.sub(r"[^a-z0-9]", "", s.lower())
 
 
 def build(kb_files=None, out_file=None):
@@ -102,7 +112,7 @@ def build(kb_files=None, out_file=None):
         else:
             groups: dict = defaultdict(list)
             for v in vals:
-                groups[key_generic(v)].append(v)
+                groups[key_generic(v, f)].append(v)
             for members in groups.values():
                 # canonical = most frequent, then shortest, then alphabetical (deterministic)
                 canonical = sorted(members, key=lambda m: (-vals[m], len(m), m))[0]

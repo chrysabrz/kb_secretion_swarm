@@ -164,9 +164,6 @@ def hbar(counts: Counter, title: str, n: int = 20):
                       height=max(320, 24 * len(top)), margin=dict(l=10, r=10, t=40, b=10),
                       coloraxis_showscale=False, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)")
     st.plotly_chart(fig, use_container_width=True)
-    if len(counts) > n:
-        st.caption(f"Showing top {n} of {len(counts)} unique values "
-                   f"(remaining {len(counts) - n} are long-tail, mostly single mentions).")
 
 
 st.sidebar.title("🦟 malaria · ESX KB")

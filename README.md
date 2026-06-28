@@ -84,12 +84,13 @@ Two ideas keep it trustworthy: every agent returns a **validated structured obje
 |------|--------------|
 | `build_proteins.py` | turn the papers KB into a protein-centric view (`proteins.json`) |
 | `normalize.py` | build `synonyms.json`: a raw → canonical name map per field |
+| `clean_data_html.py` | strip PubMed formatting markup (HTML/MathML) from `data/*.json`; re-run after rebuilding the KB |
 | `score_confidence.py` | backfill a judge `confidence` onto relationships that lack one |
 
 **Demo**
 | File | What it does |
 |------|--------------|
-| `demo_q3_2026.py` | standalone Q3 (antimalarial resistance) demo dataset — antimalarial drug resistance kept surfacing while studying the literature, so it was spun out into its own KB; selectable in the dashboard |
+| `demo_q3_2026.py` | standalone Q3 (antimalarial resistance) demo dataset - antimalarial drug resistance kept surfacing while studying the literature, so it was spun out into its own KB; selectable in the dashboard |
 
 <sub><b>Scope note: ESX is a bacterial system.</b> The two themes (Plasmodium PTEX export and bacterial ESX / Type-VII) are <b>functional analogues, not homologues</b>: a <i>Mycobacterium</i> prokaryote vs a <i>Plasmodium</i> eukaryote, independently evolved to drive effectors across membranes (the EccC FtsK/SpoIIIE ATPase is functionally analogous to PTEX's HSP101 AAA+ ATPase), with no shared ancestral blueprint. The KB treats them as analogues only (no orthology, no shared machinery) and every agent prompt carries this rule. 
 
@@ -150,7 +151,7 @@ repo root and are gitignored.
 
 Every relationship carries a `confidence` from the **LLM judge** (`validator.py`).
 For each candidate triple it re-reads the abstract and decides whether the abstract
-*actually supports it*, giving a 0–1 score. It can **vote N times**
+*actually supports it*, giving a 0-1 score. It can **vote N times**
 (`SWARM_JUDGE_VOTES`, default 3) and keeps a triple only if the **median** confidence
 ≥ `SWARM_JUDGE_THRESHOLD` (default 0.5) **and** most votes mark it supported; if it
 rejects every candidate, the paper is re-extracted once. In `proteins.json`, a
@@ -173,3 +174,4 @@ The `data/` files are committed, so the dashboard deploys as-is - nothing to reg
 3. **Settings → Secrets**: add `OPENAI_API_KEY` (powers the QA page; other pages work without it) and `NCBI_EMAIL`(not necessary)
 4. Deploy. The **Dataset** picker switches between the Main KB and the Q3 demo.
 
+**Live app:** https://chrysabrz-kb-secretion-swarm-app-fw1lxg.streamlit.app/
