@@ -91,7 +91,7 @@ Two ideas keep it trustworthy: every agent returns a **validated structured obje
 |------|--------------|
 | `demo_q3_2026.py` | standalone Q3 (antimalarial resistance) demo dataset — antimalarial drug resistance kept surfacing while studying the literature, so it was spun out into its own KB; selectable in the dashboard |
 
-<sub><b>Scope note.</b> The two themes (Plasmodium PTEX export and bacterial ESX / Type-VII) are <b>functional analogues, not homologues</b>: a <i>Mycobacterium</i> prokaryote vs a <i>Plasmodium</i> eukaryote, independently evolved to drive effectors across membranes (the EccC FtsK/SpoIIIE ATPase mirrors PTEX's HSP101 AAA+ ATPase), with no shared ancestral blueprint. The KB treats them as analogues only — no orthology, no shared machinery — and every agent prompt carries this rule. Ordinary orthology <i>within</i> a lineage (e.g. <i>Plasmodium</i> ↔ <i>Toxoplasma</i>) is real biology and is kept.</sub>
+<sub><b>Scope note: ESX is a bacterial system.</b> The two themes (Plasmodium PTEX export and bacterial ESX / Type-VII) are <b>functional analogues, not homologues</b>: a <i>Mycobacterium</i> prokaryote vs a <i>Plasmodium</i> eukaryote, independently evolved to drive effectors across membranes (the EccC FtsK/SpoIIIE ATPase is functionally analogous to PTEX's HSP101 AAA+ ATPase), with no shared ancestral blueprint. The KB treats them as analogues only (no orthology, no shared machinery) and every agent prompt carries this rule. 
 
 ## Setup
 
@@ -169,7 +169,7 @@ Triples with empty/unknown types are left for the judge to score.
 The `data/` files are committed, so the dashboard deploys as-is - nothing to regenerate.
 
 1. Push the repo (with `data/`) to GitHub.
-2. On [share.streamlit.io](https://share.streamlit.io): **New app** → **Main file path** `app.py` (it auto-installs the slim `requirements.txt` - not the pipeline file) or pick deploy while running on localhost.
+2. On [share.streamlit.io](https://share.streamlit.io): **New app** -> **Main file path** `app.py` (it auto-installs the slim `requirements.txt` - not the pipeline file) or pick deploy while running on localhost.
 3. **Settings → Secrets**: add `OPENAI_API_KEY` (powers the QA page; other pages work without it) and `NCBI_EMAIL`(not necessary)
 4. Deploy. The **Dataset** picker switches between the Main KB and the Q3 demo.
 
