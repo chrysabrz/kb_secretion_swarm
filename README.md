@@ -171,7 +171,7 @@ The `data/` files are committed, so the dashboard deploys as-is - nothing to reg
 
 1. Push the repo (with `data/`) to GitHub.
 2. On [share.streamlit.io](https://share.streamlit.io): **New app** -> **Main file path** `app.py` (it auto-installs the slim `requirements.txt` - not the pipeline file) or pick deploy while running on localhost.
-3. **Settings → Secrets**: add `OPENAI_API_KEY` (powers the QA page; other pages work without it) and `NCBI_EMAIL`(not necessary)
+3. **Settings**: add `OPENAI_API_KEY` (powers the QA page; other pages work without it - `NCBI_EMAIL`not strictly necessary)
 4. Deploy. The **Dataset** picker switches between the Main KB and the Q3 demo.
 
 **Live app:** https://chrysabrz-kb-secretion-swarm-app-fw1lxg.streamlit.app/
